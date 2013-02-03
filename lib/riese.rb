@@ -5,29 +5,34 @@ module Riese
     attr_reader :numerator, :denominator
 
     def initialize numerator, denominator
-      @numerator = numerator
-      @denominator = denominator
+      raise ZeroDivisionError if denominator == 0
+      @numerator, @denominator = self.class.normalize numerator, denominator
+    end
+
+    def + other
+      self.class.validate! other
+      Fraction.new self.numerator * other.denominator + other.numerator * self.denominator, self.denominator * other.denominator
     end
 
     def == other
       other && self.numerator == other.numerator && self.denominator == other.denominator
     end
 
-    def + other
-      to_add = other.nil? ? Fraction.new(0, 1) : other
-      self.class.reduced self.numerator * to_add.denominator + to_add.numerator * self.denominator, self.denominator * to_add.denominator
-    end
-
-    def self.reduced numerator, denominator
-      gcd = self.gcd numerator, denominator
-      if [0, 1].include? numerator
-        Fraction.new(numerator, denominator)
-      else
-        Fraction.new(numerator/gcd, denominator/gcd)
-      end
+    def to_s
+      "(#{numerator}/#{denominator})"
     end
 
     private
+    def self.normalize first, second
+      gcd = self.gcd first, second
+      [first/gcd, second/gcd]
+    end
+
+    def self.validate! fraction
+      raise TypeError, 'nil can\'t be coerced into Fraction' if fraction.nil? 
+    end
+
+    #Euclidean algorithm for determing the greatest common divisor (see http://en.wikipedia.org/wiki/Euclidean_algorithm for details)
     def self.gcd first, second
       return first if second == 0
       return second if first == 0
