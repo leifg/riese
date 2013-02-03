@@ -1,29 +1,52 @@
 # Riese
 
-TODO: Write a gem description
+DISCLAIMER: This gem doesn't claim to be a mathematic correct implementation. If you need a implementation of fraction in ruby, checkout the [Rational](http://www.ruby-doc.org/core/Rational.html) library shipped with ruby.
 
-## Installation
+## Purpose
 
-Add this line to your application's Gemfile:
+This library is solely for the purpose to demonstrate a couple of programming paradigms to newcomers:
 
-    gem 'riese'
+ - Basic OOP
+ - Mutability/Immutability
+ - TDD using Minitest
+ - BDD using RSpec
 
-And then execute:
+### Object Oriented Programming
 
-    $ bundle
+This library only consists of one class `Riese::Fraction`. This class is a representation of a fraction. You can initialize it with a numerator and a denominator. It implements the following (public) instance methods:
 
-Or install it yourself as:
+ - + (addition)
+ - - (subtraction)
+ - * (multiplication)
+ - / (division)
+ - inverse
+ - to_s
+ - ==
 
-    $ gem install riese
+It has one class method:
 
-## Usage
+ - init (makes sure the inputted value is converted to fraction)
 
-TODO: Write usage instructions here
+Additionally there are 2 private methods:
 
-## Contributing
+ - normalize (takes care of reducing the fraction and making sure that negative fractions only have a negative numerator)
+ - gcd (Euclidean algorithm for determing the greatest common divisor)
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+If used for explanation these 2 methods can be treated as a black box.
+
+### Mutability/Immutability
+
+The underlying instance variables are only set once. All actions on the instance will never change these variables and always return a new instance of fractions.
+
+### TDD using Minitest
+
+For testing the functionality of the Fraction [minitest/unit](https://github.com/seattlerb/minitest) is used. I believe that for a total beginner the assert-Syntax is easier to understand. So all the functionality is tested using this framework.
+
+### BDD using RSpec
+
+*to be implemented*
+
+## Limits
+
+- Currently it is not possible to normalize fractions with a fload numerator or denominator
+- the used algorithm for determing the greatest common divisor produces a SystemStackError very fast (try initalize the fraction 1/10000)

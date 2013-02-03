@@ -10,8 +10,23 @@ module Riese
     end
 
     def + other
-      self.class.validate! other
+      other = self.class.init other
       Fraction.new self.numerator * other.denominator + other.numerator * self.denominator, self.denominator * other.denominator
+    end
+
+    def - other
+      other = self.class.init other * -1
+      self + other
+    end
+
+    def * other
+      other = self.class.init other
+      Fraction.new self.numerator * other.numerator, self.denominator * other.denominator
+    end
+
+    def / other
+      other = self.class.init other
+      self * other.inverse
     end
 
     def == other
@@ -22,20 +37,30 @@ module Riese
       "(#{numerator}/#{denominator})"
     end
 
-    private
-    def self.normalize first, second
-      gcd = self.gcd first, second
-      [first/gcd, second/gcd]
+    def inverse
+      Fraction.new self.denominator, self.numerator
     end
 
-    def self.validate! fraction
-      raise TypeError, 'nil can\'t be coerced into Fraction' if fraction.nil? 
+    def self.init input
+      raise TypeError, 'nil can\'t be coerced into Fraction' if input.nil?
+      return input if input.is_a? Fraction
+      return Fraction.new input, 1
+    end
+
+    private
+    def self.normalize numerator, denominator
+      if denominator < 0
+        numerator = numerator * -1
+        denominator = denominator * -1
+      end
+      gcd = self.gcd numerator.abs, denominator
+      [numerator/gcd, denominator/gcd]
     end
 
     #Euclidean algorithm for determing the greatest common divisor (see http://en.wikipedia.org/wiki/Euclidean_algorithm for details)
     def self.gcd first, second
-      return first if second == 0
-      return second if first == 0
+      return first if second <= 0
+      return second if first <= 0
       if first > second
         self.gcd first - second, second
       else
