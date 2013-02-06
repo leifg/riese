@@ -1,6 +1,6 @@
 # Riese
 
-DISCLAIMER: This gem doesn't claim to be a mathematic correct implementation. If you need a implementation of fraction in ruby, checkout the [Rational](http://www.ruby-doc.org/core/Rational.html) library shipped with ruby.
+**DISCLAIMER:** This gem doesn't claim to be a mathematic correct implementation. If you need a implementation of fraction in ruby, checkout the [Rational](http://www.ruby-doc.org/core/Rational.html) library shipped with ruby.
 
 ## Introduction
 
