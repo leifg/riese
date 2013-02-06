@@ -29,14 +29,14 @@ It has one class method:
 
 Additionally there are 2 private methods:
 
- - normalize (takes care of reducing the fraction and making sure that negative fractions only have a negative numerator)
+ - normalize (takes care of reducing the fraction and makes sure that negative fractions only have a negative numerator)
  - gcd (Euclidean algorithm for determing the greatest common divisor)
 
 If used for explanation these 2 methods can be treated as a black box.
 
 ### Mutability/Immutability
 
-The underlying instance variables are only set once. All actions on the instance will never change these variables and always return a new instance of fractions.
+The underlying instance variables are only set once. All actions on the instance will never change these variables and always return a new instance of a fraction.
 
 ### TDD using Minitest
 
@@ -44,9 +44,9 @@ For testing the functionality of the Fraction [minitest/unit](https://github.com
 
 ### BDD using RSpec
 
-The same tests that have been implemented using minitest, are also available as examples in [RSpec](http://rspec.info). So for people that already have a background in OOP or Test::Unit syntax, this might be useful.
+The same tests that have been implemented using minitest, are also available as examples in [RSpec](http://rspec.info). For people that already have a background in OOP or Test::Unit syntax, this might be useful.
 
-## Limits
+## Limitations
 
 - Currently it is not possible to normalize fractions with a fload numerator or denominator
 - the used algorithm for determing the greatest common divisor produces a SystemStackError very fast (try initalize the fraction 1/10000)
