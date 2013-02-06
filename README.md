@@ -44,7 +44,7 @@ For testing the functionality of the Fraction [minitest/unit](https://github.com
 
 ### BDD using RSpec
 
-*to be implemented*
+The same tests that have been implemented using minitest, are also available as examples in [RSpec](http://rspec.info). So for people that already have a background in OOP or Test::Unit syntax, this might be useful.
 
 ## Limits
 
