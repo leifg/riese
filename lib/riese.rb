@@ -15,8 +15,8 @@ module Riese
     end
 
     def - other
-      other = self.class.init other * -1
-      self + other
+      other = self.class.init other
+      self + other * -1
     end
 
     def * other
