@@ -2,6 +2,25 @@
 
 DISCLAIMER: This gem doesn't claim to be a mathematic correct implementation. If you need a implementation of fraction in ruby, checkout the [Rational](http://www.ruby-doc.org/core/Rational.html) library shipped with ruby.
 
+## Introduction
+
+To play with it, just grab a ruby version (only tested with MRI Ruby 1.9) and run the following commands:
+
+    gem install bundler
+    bundle install --path vendor/local
+
+To execute the Minitest Test file run:
+    
+    bundle exec rake test
+
+To execute the RSpec examples run:
+    
+    bundle exec rake spec
+
+To start the file watcher, run:
+
+    bundle exec guard
+
 ## Purpose
 
 This library is solely for the purpose to demonstrate a couple of programming paradigms to newcomers:
