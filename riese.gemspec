@@ -12,12 +12,12 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Arithmetic functions on Fractions}
   gem.homepage      = ''
 
-  gem.add_development_dependency 'minitest'
-  gem.add_development_dependency 'turn'
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-minitest'
-  gem.add_development_dependency 'guard-rspec'
+  gem.add_development_dependency 'minitest', '~> 4.6'
+  gem.add_development_dependency 'turn', '~> 0.9'
+  gem.add_development_dependency 'rspec', '~> 2.12'
+  gem.add_development_dependency 'guard', '~> 1.6'
+  gem.add_development_dependency 'guard-minitest', '~> 0.5'
+  gem.add_development_dependency 'guard-rspec', '~> 2.4'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
