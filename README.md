@@ -69,5 +69,5 @@ The same tests that have been implemented using minitest, are also available as 
 
 ## Limitations
 
-- Currently it is not possible to normalize fractions with a fload numerator or denominator
+- Currently it is not possible to normalize fractions with a float numerator or denominator
 - the used algorithm for determing the greatest common divisor produces a SystemStackError very fast (try initalize the fraction 1/10000)
