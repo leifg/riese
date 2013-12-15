@@ -4,6 +4,8 @@
 
 ## Introduction
 
+See the [story behind it](http://leifg.ghost.io/get-yourself-a-simple-project-for-explaining-stuff/)
+
 To play with it, just grab a ruby version (only tested with MRI Ruby 1.9) and run the following commands:
 
     gem install bundler
